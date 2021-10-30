@@ -8,7 +8,7 @@ var MyIShopList = React.createClass({
 
       this.props.listProducts.forEach( function( item ){
         var row=
-          React.DOM.li({},
+          React.DOM.li({key:'li'+item.code},
             React.DOM.div({key:item.code,className:'Row'},
               React.DOM.div({},React.DOM.span({},item.name)),
               React.DOM.div({},React.DOM.span({},item.price)),

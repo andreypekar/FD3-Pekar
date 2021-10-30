@@ -1,35 +1,20 @@
-﻿.MyIShopList
-{
-  border: double gray 3px;
-  width: 180px;
-  padding: 3px 7px;
-  background-color: #F0F0F0;
+﻿.MyIShopList .Catalog ul {
+  margin-left: 0;
+  padding-left: 0;
 }
 
-.MyIShopList .Question
-{
-  font-weight: bold;
+.MyIShopList .Catalog li {
+  list-style-type: none;
 }
 
-.MyIShopList .Answers
-{
-  padding-top: 5px;
+.MyIShopList .Row {
+  display: table;
+  width: 80%;
+  table-layout: fixed;
+  margin-bottom: 10px;
 }
 
-.MyIShopList .Answers .Answer
-{
-  padding: 2px 0;
-}
-
-.MyIShopList .Answers .Answer .Count
-{
-  float: right;
-  width: 30px;
-  font-weight: bold;
-  text-align: right;
-}
-
-.MyIShopList .Answers .Answer .Text
-{
-  margin-right: 30px;
+.MyIShopList .Row div{
+  display: table-cell;
+  vertical-align: top;
 }

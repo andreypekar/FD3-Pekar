@@ -17,16 +17,16 @@
 
     var shopNameText='iShop вам так жилось';
     var listProductsArr=[ 
-      {name:'Телевизор Samsung QE55QN87AAU',price:3290.00,url:'https://content2.onliner.by/catalog/device/main/e7d4ed8938ec1dde07f62fe26f0178de.jpeg',code:1,count:21}, 
-      {name:'Ноутбук Lenovo IdeaPad 3 15ALC6 82KU00B3RK',price:1653.00,url:'https://content2.onliner.by/catalog/device/main/a7fac662551fc4117e9822c71d96be25.jpeg',code:2,count:17}, 
-      {name:'Смартфон Samsung Galaxy Z Flip3 5G 8GB/256GB',price:3040.00,url:'https://content2.onliner.by/catalog/device/main/352d3580699c9d848a441e457a3e1a4c.jpeg',code:3,count:7}, 
-      {name:'Наушники Apple AirPods 2',price:360.00,url:'https://content2.onliner.by/catalog/device/main/1dfadc62ac6f81e051aab5f3f290cc16.jpeg',code:4,count:13}, 
-      {name:'Электронная книга PocketBook 616',price:299.00,url:'https://content2.onliner.by/catalog/device/main/68564f27a87a30afa43c186321835434.jpeg',code:5,count:3}, 
+      {name:'Телевизор Samsung QE55QN87AAU',price:'3290.00',url:'https://content2.onliner.by/catalog/device/main/e7d4ed8938ec1dde07f62fe26f0178de.jpeg',code:1,count:21}, 
+      {name:'Ноутбук Lenovo IdeaPad 3 15ALC6 82KU00B3RK',price:'1653.00',url:'https://content2.onliner.by/catalog/device/main/a7fac662551fc4117e9822c71d96be25.jpeg',code:2,count:17}, 
+      {name:'Смартфон Samsung Galaxy Z Flip3 5G 8GB/256GB',price:'3040.00',url:'https://content2.onliner.by/catalog/device/main/352d3580699c9d848a441e457a3e1a4c.jpeg',code:3,count:7}, 
+      {name:'Наушники Apple AirPods 2',price:'360.00',url:'https://content2.onliner.by/catalog/device/main/1dfadc62ac6f81e051aab5f3f290cc16.jpeg',code:4,count:13}, 
+      {name:'Электронная книга PocketBook 616',price:'299.00',url:'https://content2.onliner.by/catalog/device/main/68564f27a87a30afa43c186321835434.jpeg',code:5,count:3},
     ];
 
     ReactDOM.render(
       React.createElement(MyIShopList,{shopName:shopNameText,listProducts:listProductsArr}), 
-      document.getElementById('container')
+      document.getElementById('container'),
     );
 
   </script>

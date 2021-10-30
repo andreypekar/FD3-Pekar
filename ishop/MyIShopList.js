@@ -4,19 +4,25 @@ var MyIShopList = React.createClass({
 
     render: function() {
   
-      var answersCode=[];
-      for ( var a=0; a<this.props.answers.length; a++ ) {
-        var answer=this.props.answers[a];
-        var answerCode=        
-          React.DOM.div({key:answer.code,className:'Answer'},
-            React.DOM.span({className:'Count'},answer.count),
-            React.DOM.span({className:'Text'},answer.text),
+      var rowsArr=[];
+
+      this.props.listProducts.forEach( function( item ){
+        var row=
+          React.DOM.li({},
+            React.DOM.div({key:item.code,className:'Row'},
+              React.DOM.div({},React.DOM.span({},item.name)),
+              React.DOM.div({},React.DOM.span({},item.price)),
+              React.DOM.div({},React.DOM.a({href:item.url},'ссылка')),
+              React.DOM.div({},React.DOM.span({},item.count)),
+            ),
           );
-        answersCode.push(answerCode);
-      }
-      return React.DOM.div( {className:'MyIShopList'}, 
-        React.DOM.div( {className:'Question'}, this.props.question ),
-        React.DOM.div( {className:'Answers'}, answersCode ),
+
+        rowsArr.push(row);
+      });
+
+      return React.DOM.div( {className:'MyIShopList'},
+        React.DOM.h1( {}, this.props.shopName ),
+        React.DOM.ul( {className:'Catalog'}, rowsArr ),
       );
     },
   

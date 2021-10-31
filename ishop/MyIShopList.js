@@ -4,20 +4,15 @@ var MyIShopList = React.createClass({
 
     render: function() {
   
-      var rowsArr=[];
-
-      this.props.listProducts.forEach( function( item ){
-        var row=
-          React.DOM.li({key:'li'+item.code},
-            React.DOM.div({key:item.code,className:'Row'},
-              React.DOM.div({},React.DOM.span({},item.name)),
-              React.DOM.div({},React.DOM.span({},item.price)),
-              React.DOM.div({},React.DOM.a({href:item.url},'ссылка')),
-              React.DOM.div({},React.DOM.span({},item.count)),
-            ),
-          );
-
-        rowsArr.push(row);
+      var rowsArr=this.props.listProducts.map( function( item ){
+        return React.DOM.li({key:'li'+item.code},
+          React.DOM.div({key:item.code,className:'Row'},
+            React.DOM.div({},React.DOM.span({},item.name)),
+            React.DOM.div({},React.DOM.span({},item.price)),
+            React.DOM.div({},React.DOM.a({href:item.url},'ссылка')),
+            React.DOM.div({},React.DOM.span({},item.count)),
+          ),
+        );
       });
 
       return React.DOM.div( {className:'MyIShopList'},

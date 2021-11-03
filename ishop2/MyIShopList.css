@@ -1,0 +1,32 @@
+﻿.MyIShopList .Catalog {
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.MyIShopList .Catalog li {
+  list-style-type: none;
+}
+
+.MyIShopList .Row {
+  display: table;
+  table-layout: fixed;
+  margin: 0px;
+  padding: 0px;
+}
+
+.MyIShopList .Row .Cell {
+  width: 100px;
+  display: table-cell;
+  vertical-align: top;
+  text-align: right;
+  word-wrap: break-word;
+  border: 1px solid black;
+  margin: 0px;
+  padding: 0px;
+}
+
+.MyIShopList .Row .Btn {
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid black;
+}

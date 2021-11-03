@@ -11,10 +11,9 @@
     ),
   },
 
-
   getDefaultProps: function () {
     return {
-      colnames[
+      colnames: [
         {col:1, name:'Name'},
         {col:2, name:'Price'},
         {col:3, name:'URL'},
@@ -26,17 +25,17 @@
 
   render: function() {
 
-    var arrHeaderRows = new Array();
+    var arrHeaderRow = new Array();
 
     for (let i=1; i<=this.props.colnames.length; i++) {
       for ('col' in this.props.colnames[i]) {
         if (this.props.colnames[i]['col'] == i) {
-          arrHeaderRows.push(React.DOM.div({className:'HeaderCell'},this.props.colnames[i]['name']));
+          arrHeaderRow.push(React.DOM.div({className:'HeaderCell'},this.props.colnames[i]['name']));
         }
       }
     }
 
     return
-      React.DOM.div( {className:'TableHeader'}, arrHeaderRows );
+      React.DOM.div( {className:'TableHeader'}, arrHeaderRow );
   },
 });

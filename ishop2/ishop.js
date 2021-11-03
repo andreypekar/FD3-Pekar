@@ -22,19 +22,13 @@
     render: function() {
   
       var rowsArr=this.state.arrGoods.map( function( item ) {
-        return React.createElement(Goods,{name:item.name,price:item.price,url:item.url,code:item.code,count:item.count});
+        return React.createElement( Goods, {name:item.name,price:item.price,url:item.url,code:item.code,count:item.count});
       });
 
       return React.DOM.div( {className:'IShop'},
         React.DOM.h1( {}, this.props.shopName ),
-        React.DOM.div( {className:'IShopTable'},
-          React.DOM.div( {className:'Header'},
-            React.DOM.div({className:'GoodsCell'},'Name'),
-            React.DOM.div({className:'GoodsCell'},'Price'),
-            React.DOM.div({className:'GoodsCell'},'URL'),
-            React.DOM.div({className:'GoodsCell'},'Quantity'),
-            React.DOM.div({className:'GoodsCell'},'Control'),
-          ),
+        React.DOM.div( {className:'Table'},
+          React.createElement( TableHeader, {colnames:[{col:1, name:'Name'},{col:2, name:'Price'},{col:3, name:'URL'},{col:4, name:'Quantity'},{col:5, name:'Control'}]}),
           rowsArr ),
       );
     },

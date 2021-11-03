@@ -1,32 +1,6 @@
-﻿.MyIShopList .ishopTable {
+﻿.IShop .IShopTable {
   display: table; 
   border-collapse: collapse;
   margin: 0px;
   padding: 0px;
 }
-
-.MyIShopList .Header {
-  display: table-row;
-  font-weight: bold;
-  width: 80%;
-}
-
-.MyIShopList .Row {
-  display: table-row;
-}
-
-.MyIShopList .Cell {
-  display: table-cell;
-  border: 1px solid black;
-  vertical-align: top;
-  text-align: left;
-  word-wrap: break-word;
-  margin: 0px;
-  padding: 0px;
-}
-
-/* .MyIShopList .Row .Btn {
-  display: inline-block;
-  vertical-align: top;
-  border: 1px solid black;
-} */

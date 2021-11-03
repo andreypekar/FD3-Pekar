@@ -28,7 +28,7 @@
     return React.DOM.div( {className:'IShop'},
       React.DOM.h1( {}, this.props.shopName ),
       React.DOM.div( {className:'Table'},
-        React.createElement( TableHeader, {name:'header'}),
+        React.createElement( TableHeader, {colnames:[{col:1, name:'Name'},{col:2, name:'Price'},{col:3, name:'URL'},{col:4, name:'Quantity'},{col:5, name:'Control'}]}),
         rowsArr ),
     );
   },

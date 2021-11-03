@@ -2,7 +2,7 @@
 
   displayName: 'TableHeader',
 
-/*   getDefaultProps: function () {
+  getDefaultProps: function () {
     return {
       colnames: [
         {col:1, name:'Name'},
@@ -12,20 +12,20 @@
         {col:5, name:'Control'}
       ]
     };
-  }, */
+  },
 
-/*   propTypes: {
+  propTypes: {
     colnames: React.PropTypes.arrayOf(
       React.PropTypes.shape({
         col: React.PropTypes.number,
         name: React.PropTypes.string,
       })
     ),
-  }, */
+  },
 
   render: function() {
 
-/*     var arrHeaderRow = [];
+    var arrHeaderRow = [];
 
     for (let i=0; i<this.props.colnames.length; i++) {
       for (key in this.props.colnames[i]) {
@@ -35,16 +35,8 @@
           }
         }
       }
-    } */
+    }
 
-    return
-//      React.DOM.div( {className:'TableHeader'}, arrHeaderRow );
-    React.DOM.div( {className:'TableHeader'},
-      React.DOM.div({className:'HeaderCell'},'Name'),
-      React.DOM.div({className:'HeaderCell'},'Price'),
-      React.DOM.div({className:'HeaderCell'},'URL'),
-      React.DOM.div({className:'HeaderCell'},'Quantity'),
-      React.DOM.div({className:'HeaderCell'},'Control'),
-    );
+    return React.DOM.div( {className:'TableHeader'}, arrHeaderRow );
   },
 });

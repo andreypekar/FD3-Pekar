@@ -23,7 +23,7 @@
         {col:3, name:'URL'},
         {col:4, name:'Quantity'},
         {col:5, name:'Control'}
-      ]
+      ],
     };
   },
   

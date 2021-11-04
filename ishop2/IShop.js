@@ -37,15 +37,7 @@
   deleteRow: function(code) {
     console.log( 'будет удалена строка # '+code );
     
-    this.setState( {arrGoods:
-      this.state.arrGoods.filter( function (el) {
-        for (key in el) {
-          if (key=='code') {
-            return ( el[key]!=code );
-          }
-        }
-      })
-    });
+    this.setState( {arrGoods: this.state.arrGoods.filter(el => {return el.code!=code})} );
   },
   
   render: function() {

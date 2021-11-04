@@ -31,8 +31,7 @@
 
   rowNumSelected: function(code) {
     console.log( 'выбрана строка # '+code + ', сейчас флаг подсветки был ' + this.state.clickOnRow);
-    this.setState( {clickOnRow:(this.state.selectedRowCode!=code || !this.state.clickOnRow)} );
-    this.setState( {selectedRowCode:code} );
+    this.setState( {clickOnRow:(this.state.selectedRowCode!=code || !this.state.clickOnRow), selectedRowCode:code} );
   },
 
   deleteRow: function(code) {

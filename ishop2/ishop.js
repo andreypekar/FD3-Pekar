@@ -54,15 +54,16 @@
     var self=this;
 
     var rowsArr=self.state.arrGoods.map( function( item ) {
-      return React.createElement( Goods, {name:item.name,
-          price:item.price,
-          url:item.url,
-          code:item.code,
-          count:item.count,
-          cbSelected: self.rowNumSelected,
-          cbDeleted: self.deleteRow,
-          isSelectRow: (self.state.selectedRowCode==item.code && self.state.clickOnRow),
-        });
+      return React.createElement( Goods, {key:item.code,
+        name:item.name,
+        price:item.price,
+        url:item.url,
+        code:item.code,
+        count:item.count,
+        cbSelected: self.rowNumSelected,
+        cbDeleted: self.deleteRow,
+        isSelectRow: (self.state.selectedRowCode==item.code && self.state.clickOnRow),
+      });
     });
 
     return React.DOM.div( {className:'IShop'},

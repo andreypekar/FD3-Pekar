@@ -31,7 +31,7 @@
       for (key in this.props.colnames[i]) {
         if (key == 'col') {
           if (this.props.colnames[i][key] == (i+1)){
-            arrHeaderRow.push(React.DOM.div( {className:'HeaderCell'}, this.props.colnames[i]['name']));
+            arrHeaderRow.push(React.DOM.div( {key:this.props.colnames[i][key],className:'HeaderCell'}, this.props.colnames[i]['name']));
           }
         }
       }

@@ -26,7 +26,7 @@
   },
   
   render: function() {
-    return React.DOM.div({key:this.props.code,className:'GoodsRow',style:{backgroundColor:(this.props.isSelectRow?'LightGreen':'White')},onClick:this.rowClicked,},
+    return React.DOM.div({className:'GoodsRow',style:{backgroundColor:(this.props.isSelectRow?'LightGreen':'White')},onClick:this.rowClicked,},
       React.DOM.div({className:'GoodsCell'},React.DOM.span({},this.props.name)),
       React.DOM.div({className:'GoodsCell'},React.DOM.span({},this.props.price)),
       React.DOM.div({className:'GoodsCell'},React.DOM.span({},this.props.url)),

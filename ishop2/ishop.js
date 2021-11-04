@@ -35,20 +35,22 @@
   
   render: function() {
 
-    var rowsArr=this.state.arrGoods.map( function( item ) {
+    var self=this;
+
+    var rowsArr=self.state.arrGoods.map( function( item ) {
       return React.createElement( Goods, {name:item.name,
           price:item.price,
           url:item.url,
           code:item.code,
           count:item.count,
-          cbSelected:this.rowNumSelected,
+          cbSelected: self.rowNumSelected,
         });
     });
 
     return React.DOM.div( {className:'IShop'},
-      React.DOM.h1( {}, this.props.shopName ),
+      React.DOM.h1( {}, self.props.shopName ),
       React.DOM.div( {className:'Table'},
-        React.createElement( TableHeader, {colnames:this.state.colnames}),
+        React.createElement( TableHeader, {colnames:self.state.colnames}),
         rowsArr ),
     );
   },

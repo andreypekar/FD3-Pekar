@@ -9,12 +9,20 @@
     code: React.PropTypes.number,
     count: React.PropTypes.number,
     cbSelected: React.PropTypes.func,
+    cbDeleted: React.PropTypes.func,
     isSelectRow: React.PropTypes.bool,
   },
 
   rowClicked: function(EO) {
-    console.log( 'выбрана строка # '+this.props.code + ', подсветка ' + this.props.isSelectRow?'LightGreen':'White');
+    if (EO.defaultPrevented) return;
+    console.log( 'выбрана строка # '+this.props.code + ', сейчас флаг ' + this.props.isSelectRow + ', сейчас подсветка ' + (this.props.isSelectRow?"LightGreen":"White") );
     this.props.cbSelected(this.props.code);
+  },
+
+  rowDeleteClick: function(EO) {
+    EO.preventDefault();
+    console.log( 'выбрана для удаления строка # '+this.props.code );
+    this.props.cbDeleted(this.props.code);
   },
   
   render: function() {
@@ -23,7 +31,7 @@
       React.DOM.div({className:'GoodsCell'},React.DOM.span({},this.props.price)),
       React.DOM.div({className:'GoodsCell'},React.DOM.span({},this.props.url)),
       React.DOM.div({className:'GoodsCell'},React.DOM.span({},this.props.count)),
-      React.DOM.div({className:'GoodsCell'},React.DOM.input({type:'button',value:'Delete'})),
+      React.DOM.div({className:'GoodsCell'},React.DOM.input({type:'button',value:'Delete',onClick:this.rowDeleteClick})),
     );
   },
 });

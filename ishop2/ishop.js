@@ -30,9 +30,23 @@
   },
 
   rowNumSelected: function(code) {
-    console.log( 'выбрана строка # '+code + ', подсветка ' + this.state.clickOnRow);
+    console.log( 'выбрана строка # '+code + ', сейчас флаг подсветки был ' + this.state.clickOnRow);
     this.setState( {clickOnRow:(this.state.selectedRowCode!=code || !this.state.clickOnRow)} );
     this.setState( {selectedRowCode:code} );
+  },
+
+  deleteRow: function(code) {
+    console.log( 'будет удалена строка # '+code );
+    
+    this.setState( {arrGoods:
+      this.state.arrGoods.filter( function (el) {
+        for (key in el) {
+          if (key=='code') {
+            return ( el[key]!=code );
+          }
+        }
+      })
+    });
   },
   
   render: function() {
@@ -46,6 +60,7 @@
           code:item.code,
           count:item.count,
           cbSelected: self.rowNumSelected,
+          cbDeleted: self.deleteRow,
           isSelectRow: (self.state.selectedRowCode==item.code && self.state.clickOnRow),
         });
     });

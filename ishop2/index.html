@@ -1,14 +1,14 @@
-﻿<!DOCTYPE html> 
-<html> 
-<head> 
+﻿<!DOCTYPE html>
+<html>
+<head>
   <meta charset="utf-8" />
   <title>iShop2</title>
-</head> 
-<body> 
-  <div id="container"></div> 
+</head>
+<body>
+  <div id="container"></div>
       
-  <script src="https://unpkg.com/react@15/dist/react.js"></script> 
-  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+  <script src="https://unpkg.com/react@15/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
       
   <script src="IShop.js"></script>
   <link rel="stylesheet" type="text/css" href="IShop.css" />
@@ -20,7 +20,7 @@
   <script>
 
     var shopNameText='iShop вам так жилось';
-    var listProductsArr=[ 
+    var listProductsArr=[
       {name:'Телевизор Samsung QE55QN87AAU',price:3290.00,url:'http://samsung.com',code:1,count:21}, 
       {name:'Ноутбук Lenovo IdeaPad 3 15ALC6 82KU00B3RK',price:1653.00,url:'http://lenovo.com',code:2,count:17}, 
       {name:'Смартфон Samsung Galaxy Z Flip3 5G 8GB/256GB',price:3040.00,url:'http://samsung.com',code:3,count:7}, 
@@ -29,11 +29,11 @@
     ];
 
     ReactDOM.render(
-      React.createElement(IShop,{shopName:shopNameText,listProducts:listProductsArr}), 
+      React.createElement(IShop,{shopName:shopNameText,listProducts:listProductsArr}),
       document.getElementById('container'),
     );
 
   </script>
 
-</body> 
+</body>
 </html>

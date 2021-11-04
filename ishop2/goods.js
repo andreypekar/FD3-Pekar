@@ -15,7 +15,7 @@
 
   rowClicked: function(EO) {
     if (EO.defaultPrevented) return;
-    console.log( 'выбрана строка # '+this.props.code + ', сейчас флаг ' + this.props.isSelectRow + ', сейчас подсветка ' + (this.props.isSelectRow?"LightGreen":"White") );
+    console.log( 'выбрана строка # '+this.props.code + ', сейчас флаг ' + this.props.isSelectRow + ', сейчас подсветка ' + (this.props.isSelectRow?"LightGreen":"transparent") );
     this.props.cbSelected(this.props.code);
   },
 
@@ -26,7 +26,7 @@
   },
   
   render: function() {
-    return React.DOM.div({className:'GoodsRow',style:{backgroundColor:(this.props.isSelectRow?'LightGreen':'White')},onClick:this.rowClicked,},
+    return React.DOM.div({className:'GoodsRow',onClick:this.rowClicked, style:(this.props.isSelectRow?{backgroundColor:'LightGreen'}:{}),},
       React.DOM.div({className:'GoodsCell'},React.DOM.span({},this.props.name)),
       React.DOM.div({className:'GoodsCell'},React.DOM.span({},this.props.price)),
       React.DOM.div({className:'GoodsCell'},React.DOM.span({},this.props.url)),

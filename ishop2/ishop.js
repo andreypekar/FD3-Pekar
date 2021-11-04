@@ -24,13 +24,25 @@
         {col:4, name:'Quantity'},
         {col:5, name:'Control'}
       ],
+      selectedRowCode: null,
     };
+  },
+
+  rowNumSelected: function(code) {
+    console.log( 'выбрана строка # '+code );
+    this.setState( {selectedRowCode:code} );
   },
   
   render: function() {
 
     var rowsArr=this.state.arrGoods.map( function( item ) {
-      return React.createElement( Goods, {name:item.name,price:item.price,url:item.url,code:item.code,count:item.count});
+      return React.createElement( Goods, {name:item.name,
+          price:item.price,
+          url:item.url,
+          code:item.code,
+          count:item.count,
+          cbSelected:this.rowNumSelected,
+        });
     });
 
     return React.DOM.div( {className:'IShop'},

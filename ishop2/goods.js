@@ -8,10 +8,15 @@
     url: React.PropTypes.string,
     code: React.PropTypes.number,
     count: React.PropTypes.number,
+    cbSelected: React.PropTypes.func,
   },
-    
+
+  rowClicked: function(EO) {
+    this.props.cbSelected(this.props.code);
+  },
+  
   render: function() {
-    return React.DOM.div({key:this.props.code,className:'GoodsRow'},
+    return React.DOM.div({key:this.props.code,className:'GoodsRow',onClick:this.rowClicked},
       React.DOM.div({className:'GoodsCell'},React.DOM.span({},this.props.name)),
       React.DOM.div({className:'GoodsCell'},React.DOM.span({},this.props.price)),
       React.DOM.div({className:'GoodsCell'},React.DOM.span({},this.props.url)),

@@ -9,14 +9,16 @@
     code: React.PropTypes.number,
     count: React.PropTypes.number,
     cbSelected: React.PropTypes.func,
+    isSelectRow: React.PropTypes.bool,
   },
 
   rowClicked: function(EO) {
+    console.log( 'выбрана строка # '+this.props.code + ', подсветка ' + this.props.isSelectRow?'LightGreen':'White');
     this.props.cbSelected(this.props.code);
   },
   
   render: function() {
-    return React.DOM.div({key:this.props.code,className:'GoodsRow',onClick:this.rowClicked},
+    return React.DOM.div({key:this.props.code,className:'GoodsRow',style:{backgroundColor:(this.props.isSelectRow?'LightGreen':'White')},onClick:this.rowClicked,},
       React.DOM.div({className:'GoodsCell'},React.DOM.span({},this.props.name)),
       React.DOM.div({className:'GoodsCell'},React.DOM.span({},this.props.price)),
       React.DOM.div({className:'GoodsCell'},React.DOM.span({},this.props.url)),

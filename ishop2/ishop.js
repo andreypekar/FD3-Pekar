@@ -25,11 +25,13 @@
         {col:5, name:'Control'}
       ],
       selectedRowCode: null,
+      clickOnRow: false,
     };
   },
 
   rowNumSelected: function(code) {
-    console.log( 'выбрана строка # '+code );
+    console.log( 'выбрана строка # '+code + ', подсветка ' + this.state.clickOnRow);
+    this.setState( {clickOnRow:(this.state.selectedRowCode!=code || !this.state.clickOnRow)} );
     this.setState( {selectedRowCode:code} );
   },
   
@@ -44,6 +46,7 @@
           code:item.code,
           count:item.count,
           cbSelected: self.rowNumSelected,
+          isSelectRow: (self.state.selectedRowCode==item.code && self.state.clickOnRow),
         });
     });
 

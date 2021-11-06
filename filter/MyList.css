@@ -1,0 +1,17 @@
+﻿#uRow {
+  position: relative;
+  width: 260px;
+}
+
+#uCell {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 260px;
+}
+
+#MyList {
+  resize: none;
+  overflow-y: scroll;
+  width: 100%;
+}

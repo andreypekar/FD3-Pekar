@@ -1,6 +1,14 @@
-﻿.Table {
-  display: table; 
-  border-collapse: collapse;
-  margin: 0px;
-  padding: 0px;
+﻿.dTable {
+  display: table;
+  table-layout: fixed;
+  border-spacing: 5px 5px;
+}
+
+.dRow {
+  display: table-row;
+  width: 260px;
+}
+
+.dCell {
+  display: table-cell;
 }

@@ -17,9 +17,9 @@
     this.setState( {pattern:EO.target.value} );
   },
 
-  setSortFlag: function() {
+  setSortFlag: function(EO) {
     console.log( 'сработала setSortFlag' );
-    this.setState( {isSorting:!this.state.isSorting} );
+    this.setState( {isSorting:EO.target.checked} );
   },
 
   allReset: function() {

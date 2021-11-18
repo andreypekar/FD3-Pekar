@@ -1,0 +1,13 @@
+﻿.GoodsRow {
+  display: table-row;
+}
+
+.GoodsCell {
+  display: table-cell;
+  border: 1px solid black;
+  vertical-align: top;
+  text-align: left;
+  word-wrap: break-word;
+  margin: 0px;
+  padding: 0px;
+}

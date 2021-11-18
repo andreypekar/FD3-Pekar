@@ -9,15 +9,15 @@
   },
   "author": "pekar",
   "license": "ISC",
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
   "devDependencies": {
     "css-loader": "^6.5.1",
     "lite-server": "^2.6.1",
     "mini-css-extract-plugin": "^2.4.5",
     "webpack": "^5.64.1",
     "webpack-cli": "^4.9.1"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   }
 }

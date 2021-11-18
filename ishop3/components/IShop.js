@@ -1,4 +1,11 @@
-﻿var IShop = React.createClass({
+﻿import React from 'react';
+
+import './IShop.css';
+
+import TableHeader from './TableHeader';
+import Goods from './Goods';
+
+var IShop = React.createClass({
 
   displayName: 'IShop',
 
@@ -65,3 +72,5 @@
     );
   },
 });
+
+export default IShop;

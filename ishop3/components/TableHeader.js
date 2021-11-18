@@ -1,4 +1,8 @@
-﻿var TableHeader = React.createClass({
+﻿import React from 'react';
+
+import './TableHeader.css';
+
+var TableHeader = React.createClass({
 
   displayName: 'TableHeader',
 
@@ -40,3 +44,5 @@
     return React.DOM.div( {className:'TableHeader'}, arrHeaderRow );
   },
 });
+
+export default TableHeader;

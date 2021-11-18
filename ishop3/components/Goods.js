@@ -1,4 +1,8 @@
-﻿var Goods = React.createClass({
+﻿import React from 'react';
+
+import './Goods.css';
+
+var Goods = React.createClass({
 
   displayName: 'Goods',
 
@@ -35,3 +39,5 @@
     );
   },
 });
+
+export default Goods;

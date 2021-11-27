@@ -1,8 +1,8 @@
 const path = require('path');
 
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const extractCSS = new MiniCssExtractPlugin({
+const extractCSS = new ExtractTextPlugin({
     filename: "bundle.css"
 });
 
@@ -15,9 +15,16 @@ module.exports = {
     devtool:'source-map',
     module:{ 
         rules:[
+            { 
+                test: /\.jsx?$/, // какие файлы обрабатывать
+                exclude: /node_modules/, // какие файлы пропускать
+                use: { loader: "babel-loader" }
+            },
             {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader"],
+                test: /\.css$/,
+                use: extractCSS.extract({
+                    use: ["css-loader"]
+                })
             }            
         ] 
     },

@@ -1,33 +1,31 @@
 ﻿import React from 'react';
+import DOM from 'react-dom-factories';
+import PropTypes from 'prop-types';
 
 import './TableHeader.css';
 
-var TableHeader = React.createClass({
+class TableHeader extends React.Component {
 
-  displayName: 'TableHeader',
-
-  propTypes: {
-    colnames: React.PropTypes.arrayOf(
-      React.PropTypes.shape({
-        col: React.PropTypes.number,
-        name: React.PropTypes.string,
+  static propTypes = {
+    colnames: PropTypes.arrayOf(
+      PropTypes.shape({
+        col: PropTypes.number,
+        name: PropTypes.string,
       })
     ),
-  },
+  }
 
-   getDefaultProps: function () {
-    return {
-      colnames: [
-        {col:1, name:'Name'},
-        {col:2, name:'Price'},
-        {col:3, name:'URL'},
-        {col:4, name:'Quantity'},
-        {col:5, name:'Control'}
-      ]
-    };
-  },
+  static defaultProps = {
+    colnames: [
+      {col:1, name:'Name'},
+      {col:2, name:'Price'},
+      {col:3, name:'URL'},
+      {col:4, name:'Quantity'},
+      {col:5, name:'Control'}
+    ]
+  }
 
-  render: function() {
+  render () {
 
     var arrHeaderRow = [];
 
@@ -35,14 +33,14 @@ var TableHeader = React.createClass({
       for (let key in this.props.colnames[i]) {
         if (key == 'col') {
           if (this.props.colnames[i][key] == (i+1)){
-            arrHeaderRow.push(React.DOM.div( {key:this.props.colnames[i][key],className:'HeaderCell'}, this.props.colnames[i]['name']));
+            arrHeaderRow.push(DOM.div( {key:this.props.colnames[i][key],className:'HeaderCell'}, this.props.colnames[i]['name']));
           }
         }
       }
     }
 
-    return React.DOM.div( {className:'TableHeader'}, arrHeaderRow );
-  },
-});
+    return DOM.div( {className:'TableHeader'}, arrHeaderRow );
+  }
+}
 
 export default TableHeader;

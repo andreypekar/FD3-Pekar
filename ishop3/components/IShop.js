@@ -1,5 +1,4 @@
 ﻿import React from 'react';
-import DOM from 'react-dom-factories';
 import PropTypes from 'prop-types';
 
 import './IShop.css';
@@ -36,38 +35,38 @@ class IShop extends React.Component {
   }
 
   rowNumSelected = (code) => {
-    console.log( 'выбрана строка # '+code + ', сейчас флаг подсветки был ' + this.state.clickOnRow);
+    console.log( 'выбрана строка # '+code + ', у неё до выбора был флаг подсветки ' + this.state.clickOnRow);
     this.setState( {clickOnRow:(this.state.selectedRowCode!=code || !this.state.clickOnRow), selectedRowCode:code} );
   }
 
   deleteRow = (code) => {
     console.log( 'будет удалена строка # '+code );
-    
     this.setState( {arrGoods: this.state.arrGoods.filter(el => {return el.code!=code})} );
   }
   
   render() {
 
-    var self=this;
+    var rowsArr=this.state.arrGoods.map( item => 
+      <Goods key={item.code}
+        name={item.name}
+        price={item.price}
+        url={item.url}
+        code={item.code}
+        count={item.count}
+        cbSelected={ this.rowNumSelected }
+        cbDeleted={ this.deleteRow }
+        isSelectRow={ (this.state.selectedRowCode==item.code && this.state.clickOnRow) }
+      />
+    );
 
-    var rowsArr=self.state.arrGoods.map( function( item ) {
-      return React.createElement( Goods, {key:item.code,
-        name:item.name,
-        price:item.price,
-        url:item.url,
-        code:item.code,
-        count:item.count,
-        cbSelected: self.rowNumSelected,
-        cbDeleted: self.deleteRow,
-        isSelectRow: (self.state.selectedRowCode==item.code && self.state.clickOnRow),
-      });
-    });
-
-    return DOM.div( {className:'IShop'},
-      DOM.h1( {}, self.props.shopName ),
-      DOM.div( {className:'Table'},
-        React.createElement( TableHeader, {colnames:self.state.colnames}),
-        rowsArr ),
+    return (
+      <div className='IShop'>
+        <h1>{this.props.shopName}</h1>
+        <div className='Table'>
+          <TableHeader colnames={this.state.colnames} />
+          {rowsArr}
+        </div>
+      </div>
     );
   }
 }

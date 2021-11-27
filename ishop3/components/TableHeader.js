@@ -1,5 +1,4 @@
 ﻿import React from 'react';
-import DOM from 'react-dom-factories';
 import PropTypes from 'prop-types';
 
 import './TableHeader.css';
@@ -33,13 +32,17 @@ class TableHeader extends React.Component {
       for (let key in this.props.colnames[i]) {
         if (key == 'col') {
           if (this.props.colnames[i][key] == (i+1)){
-            arrHeaderRow.push(DOM.div( {key:this.props.colnames[i][key],className:'HeaderCell'}, this.props.colnames[i]['name']));
+            arrHeaderRow.push(
+              <div key={this.props.colnames[i][key]} className='HeaderCell'>
+                {this.props.colnames[i]['name']}
+              </div>
+            );
           }
         }
       }
     }
 
-    return DOM.div( {className:'TableHeader'}, arrHeaderRow );
+    return <div className='TableHeader'>{arrHeaderRow}</div>;
   }
 }
 

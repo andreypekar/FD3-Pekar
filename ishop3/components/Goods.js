@@ -1,5 +1,4 @@
 ﻿import React from 'react';
-import DOM from 'react-dom-factories';
 import PropTypes from 'prop-types';
 
 import './Goods.css';
@@ -19,7 +18,7 @@ class Goods extends React.Component {
 
   rowClicked = (EO) => {
     if (EO.defaultPrevented) return;
-    console.log( 'выбрана строка # '+this.props.code + ', сейчас флаг ' + this.props.isSelectRow + ', сейчас подсветка ' + (this.props.isSelectRow?"LightGreen":"transparent") );
+    console.log( 'выбрана строка # '+this.props.code + ', перед выбором флаг ' + this.props.isSelectRow + ', подсветка ' + (this.props.isSelectRow?"LightGreen":"transparent") );
     this.props.cbSelected(this.props.code);
   }
 
@@ -30,13 +29,33 @@ class Goods extends React.Component {
   }
   
   render() {
-    return DOM.div({className:'GoodsRow',onClick:this.rowClicked, style:(this.props.isSelectRow?{backgroundColor:'LightGreen'}:{}),},
-      DOM.div({className:'GoodsCell'},DOM.span({},this.props.name)),
-      DOM.div({className:'GoodsCell'},DOM.span({},this.props.price)),
-      DOM.div({className:'GoodsCell'},DOM.span({},this.props.url)),
-      DOM.div({className:'GoodsCell'},DOM.span({},this.props.count)),
-      DOM.div({className:'GoodsCell'},DOM.input({type:'button',value:'Delete',onClick:this.rowDeleteClick})),
-    );
+    var rowResult=null;
+
+    if (this.props.isSelectRow) {
+      rowResult = <div className='GoodsRow' onClick={this.rowClicked} style={{backgroundColor:'LightGreen'}}>
+      <div className='GoodsCell'>{this.props.name}</div>
+      <div className='GoodsCell'>{this.props.price}</div>
+      <div className='GoodsCell'>{this.props.url}</div>
+      <div className='GoodsCell'>{this.props.count}</div>
+      <div className='GoodsCell'>
+        <input type='button' value='Delete' onClick={this.rowDeleteClick}/>
+      </div>
+    </div>;
+    }
+    else
+    {
+      rowResult = <div className='GoodsRow' onClick={this.rowClicked}>
+      <div className='GoodsCell'>{this.props.name}</div>
+      <div className='GoodsCell'>{this.props.price}</div>
+      <div className='GoodsCell'>{this.props.url}</div>
+      <div className='GoodsCell'>{this.props.count}</div>
+      <div className='GoodsCell'>
+        <input type='button' value='Delete' onClick={this.rowDeleteClick}/>
+      </div>
+    </div>;
+    }
+
+    return rowResult;
   }
 }
 

@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
 import './Goods.css';
@@ -32,7 +32,7 @@ class Goods extends React.Component {
   
   render() {
     var goodRows=
-      <React.Fragment>
+      <Fragment>
         <div className='GoodsCell'>{this.props.name}</div>
         <div className='GoodsCell'>{this.props.price}</div>
         <div className='GoodsCell'>{this.props.url}</div>
@@ -41,7 +41,7 @@ class Goods extends React.Component {
           <input type='button' value='Edit' onClick={this.rowDeleteClick}/>
           <input type='button' value='Delete' onClick={this.rowDeleteClick}/>
         </div>
-      </React.Fragment>;
+      </Fragment>;
 
     var rowResult=null;
 

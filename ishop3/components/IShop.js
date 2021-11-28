@@ -7,6 +7,7 @@ import './IShop.css';
 
 import TableHeader from './TableHeader';
 import Goods from './Goods';
+import ProdTitleCard from './ProdTitleCard';
 
 class IShop extends React.Component {
 
@@ -34,6 +35,7 @@ class IShop extends React.Component {
     ],
     selectedRowCode: null,
     clickOnRow: false,
+    editMode: false,
   }
 
   rowNumSelected = (code) => {
@@ -43,12 +45,23 @@ class IShop extends React.Component {
 
   deleteRow = (code) => {
     console.log( 'будет удалена строка # '+code );
-    this.setState( {arrGoods: this.state.arrGoods.filter(el => {return el.code!=code})} );
+    this.setState( {arrGoods: this.state.arrGoods.filter(el => {return el.code!=code}),
+                    selectedRowCode: false,
+                    clickOnRow: false,
+                    editMode: false} );
+  }
+
+  editRow = (code) => {
+    console.log( 'редактируется строка # '+ code );
+  }
+
+  newOnClick = (editMode) => {
+    console.log( 'создание нового продукта' );
   }
   
   render() {
 
-    var rowsArr=this.state.arrGoods.map( item => 
+    var rowsArr=this.state.arrGoods.map( item =>
       <Goods key={item.code}
         name={item.name}
         price={item.price}
@@ -57,9 +70,12 @@ class IShop extends React.Component {
         count={item.count}
         cbSelected={ this.rowNumSelected }
         cbDeleted={ this.deleteRow }
+        cbEdited={ this.editRow }
         isSelectRow={ (this.state.selectedRowCode==item.code && this.state.clickOnRow) }
       />
     );
+
+    var prodCard=this.state.arrGoods.find(item => ( this.state.selectedRowCode==item.code && this.state.clickOnRow ) );
 
     return (
       <div className='IShop'>
@@ -68,6 +84,18 @@ class IShop extends React.Component {
           <TableHeader colnames={this.state.colnames} />
           {rowsArr}
         </div>
+        {
+          (!this.state.editMode) &&
+          <div>
+              <input type='button' value='New product' onClick={this.newOnClick}/>
+          </div>
+        }
+        {
+          (this.state.clickOnRow && !this.state.editMode) &&
+          <div>
+            <ProdTitleCard prodCardRow={prodCard} />
+          </div>
+        }
       </div>
     );
   }

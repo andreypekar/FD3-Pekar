@@ -15,6 +15,7 @@ class Goods extends React.Component {
     count: PropTypes.number,
     cbSelected: PropTypes.func,
     cbDeleted: PropTypes.func,
+    cbEdited: PropTypes.func,
     isSelectRow: PropTypes.bool,
   }
 
@@ -29,6 +30,12 @@ class Goods extends React.Component {
     console.log( 'выбрана для удаления строка # '+this.props.code );
     this.props.cbDeleted(this.props.code);
   }
+
+  rowEditClick = (EO) => {
+    EO.preventDefault();
+    console.log( 'выбрана для редактирования строка # '+this.props.code );
+    this.props.cbEdited(this.props.code);
+  }
   
   render() {
     var goodRows=
@@ -38,7 +45,7 @@ class Goods extends React.Component {
         <div className='GoodsCell'>{this.props.url}</div>
         <div className='GoodsCell'>{this.props.count}</div>
         <div className='GoodsCell'>
-          <input type='button' value='Edit' onClick={this.rowDeleteClick}/>
+          <input type='button' value='Edit' onClick={this.rowEditClick}/>
           <input type='button' value='Delete' onClick={this.rowDeleteClick}/>
         </div>
       </Fragment>;

@@ -20,8 +20,8 @@ class ProdTitleCard extends React.Component {
     return (
       <div className='ProdTitleCard'>
         <h2>{this.props.prodCardRow.name}</h2>
-        <div>{this.props.prodCardRow.price}</div>
-        <div><a href={this.props.prodCardRow.url}>{this.props.prodCardRow.url}</a></div>
+        <div>price: {this.props.prodCardRow.price}</div>
+        <div>url: <a href={this.props.prodCardRow.url}>{this.props.prodCardRow.url}</a></div>
       </div>
     );
   }

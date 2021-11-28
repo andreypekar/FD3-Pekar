@@ -34,7 +34,7 @@ class Goods extends React.Component {
   rowEditClick = (EO) => {
     EO.preventDefault();
     console.log( 'выбрана для редактирования строка # '+this.props.code );
-    this.props.cbEdited(this.props.code);
+    this.props.cbEdited(this.props.code, 2);
   }
   
   render() {

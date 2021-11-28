@@ -8,6 +8,8 @@ import './IShop.css';
 import TableHeader from './TableHeader';
 import Goods from './Goods';
 import ProdTitleCard from './ProdTitleCard';
+import ProdEditCard from './ProdEditCard';
+
 
 class IShop extends React.Component {
 
@@ -35,29 +37,51 @@ class IShop extends React.Component {
     ],
     selectedRowCode: null,
     clickOnRow: false,
-    editMode: false,
+    editMode: 0,
   }
 
   rowNumSelected = (code) => {
-    console.log( 'выбрана строка # '+code + ', у неё до выбора был флаг подсветки ' + this.state.clickOnRow);
-    this.setState( {clickOnRow:(this.state.selectedRowCode!=code || !this.state.clickOnRow), selectedRowCode:code} );
+    if (this.state.editMode === 0) {
+      console.log( 'выбрана строка # '+code + ', у неё до выбора был флаг подсветки ' + this.state.clickOnRow);
+      this.setState( {clickOnRow: (this.state.selectedRowCode!=code || !this.state.clickOnRow), selectedRowCode: code} );
+    }
   }
 
   deleteRow = (code) => {
-    console.log( 'будет удалена строка # '+code );
-    this.setState( {arrGoods: this.state.arrGoods.filter(el => {return el.code!=code}),
-                    selectedRowCode: false,
-                    clickOnRow: false,
-                    editMode: false} );
+    if (this.state.editMode === 0) {
+      console.log( 'будет удалена строка # '+code );
+      this.setState( {arrGoods: this.state.arrGoods.filter(el => {return el.code!=code}),
+                      selectedRowCode: null,
+                      clickOnRow: false,
+                      editMode: 0} );
+    }
   }
 
-  editRow = (code) => {
-    console.log( 'редактируется строка # '+ code );
+  editRow = (code, mode) => {
+    if (this.state.editMode === 0) {
+      console.log( 'редактируется строка # '+ code + ', режим ' + mode);
+      this.setState({editMode: mode, selectedRowCode: code, clickOnRow: true});
+    }
   }
 
-  newOnClick = (editMode) => {
-    console.log( 'создание нового продукта' );
+  rowNewClick = (EO) => {
+    EO.preventDefault();
+    console.log( 'создание нового продукта, режим 1' );
+    this.editRow(null, 1);
   }
+
+  addRow = (code) => {
+    console.log( 'новая строка # '+ code );
+  }
+
+  saveRow = (code) => {
+    console.log( 'сохранена строка # '+ code );
+  }
+
+  cancelRow = () => {
+    console.log( 'отмена' );
+    this.setState({editMode: 0, selectedRowCode: null, clickOnRow: false});
+}
   
   render() {
 
@@ -75,7 +99,10 @@ class IShop extends React.Component {
       />
     );
 
-    var prodCard=this.state.arrGoods.find(item => ( this.state.selectedRowCode==item.code && this.state.clickOnRow ) );
+    if (this.state.editMode === 0)
+      var prodCard=this.state.arrGoods.find(item => ( this.state.selectedRowCode==item.code && this.state.clickOnRow ) );
+    else
+      var prodCard=this.state.arrGoods.find(item => ( this.state.selectedRowCode==item.code) );
 
     return (
       <div className='IShop'>
@@ -85,16 +112,23 @@ class IShop extends React.Component {
           {rowsArr}
         </div>
         {
-          (!this.state.editMode) &&
-          <div>
-              <input type='button' value='New product' onClick={this.newOnClick}/>
-          </div>
+          (this.state.editMode === 0 ) &&
+            <input type='button' value='New product' onClick={this.rowNewClick}/>
         }
         {
-          (this.state.clickOnRow && !this.state.editMode) &&
+          (this.state.clickOnRow && this.state.editMode === 0) &&
           <div>
             <ProdTitleCard prodCardRow={prodCard} />
           </div>
+        }
+        {
+          (this.state.editMode === 1 || this.state.editMode === 2) &&
+          <ProdEditCard prodCardRow={prodCard}
+            mode={this.state.editMode}
+            colnames={this.state.colnames}
+            cbAdd={ this.addRow }
+            cbSave={ this.saveRow }
+            cbCancel={ this.cancelRow } />
         }
       </div>
     );

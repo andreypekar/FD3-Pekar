@@ -1,0 +1,18 @@
+﻿.ProdCardTable {
+  display: table; 
+  border-collapse: collapse;
+  margin: 0px;
+  padding: 0px;
+}
+
+.ProdCardRow {
+  display: table-row;
+}
+
+.ProdCardCell {
+  display: table-cell;
+}
+
+.ProdCardCell input {
+  width: 400px;
+}

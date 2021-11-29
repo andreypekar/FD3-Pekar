@@ -208,29 +208,11 @@ class ProdEditCard extends React.Component {
           </div>
         {
           (!resFlgErr) &&
-          <Fragment>
-          {
-            (this.props.mode === 1) &&
-            <input type='button' value='Save' onClick={this.rowSaveClick}/>
-          }
-          {
-            (this.props.mode === 2) &&
-            <input type='button' value='Add' onClick={this.rowSaveClick}/>
-          }
-          </Fragment>
+          <input type='button' value={this.props.mode === 1?'Save':'Add'} onClick={this.rowSaveClick}/>
         }
         {
           (resFlgErr) &&
-          <Fragment>
-          {
-            (this.props.mode === 1) &&
-            <input type='button' value='Save' onClick={this.rowSaveClick} disabled />
-          }
-          {
-            (this.props.mode === 2) &&
-            <input type='button' value='Add' onClick={this.rowSaveClick} disabled />
-          }
-          </Fragment>
+          <input type='button' value={this.props.mode === 1?'Save':'Add'} onClick={this.rowSaveClick} disabled />
         }
           <input type='button' value='Cancel' onClick={this.rowCancelClick}/>
           <br/>

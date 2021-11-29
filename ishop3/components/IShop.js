@@ -103,6 +103,7 @@ class IShop extends React.Component {
         cbDeleted={ this.deleteRow }
         cbEdited={ this.editRow }
         isSelectRow={ (this.state.selectedRowCode==item.code && this.state.clickOnRow) }
+        mode={this.state.editMode}
       />
     );
     let prodCard = {}; //строка продукта 

@@ -17,6 +17,7 @@ class Goods extends React.Component {
     cbDeleted: PropTypes.func, //deleteRow()
     cbEdited: PropTypes.func, //editRow()
     isSelectRow: PropTypes.bool,
+    mode: PropTypes.number,
   }
 
   rowClicked = (EO) => {
@@ -45,8 +46,20 @@ class Goods extends React.Component {
         <div className='GoodsCell'>{this.props.url}</div>
         <div className='GoodsCell'>{this.props.count}</div>
         <div className='GoodsCell'>
-          <input type='button' value='Edit' onClick={this.rowEditClick}/>
-          <input type='button' value='Delete' onClick={this.rowDeleteClick}/>
+        {
+          (this.props.mode === 0) &&
+          <Fragment>
+            <input type='button' value='Edit' onClick={this.rowEditClick} />
+            <input type='button' value='Delete' onClick={this.rowDeleteClick} />
+          </Fragment>
+        }
+        {
+          (this.props.mode === 1 || this.props.mode === 2) &&
+          <Fragment>
+            <input type='button' value='Edit' onClick={this.rowEditClick} disabled />
+            <input type='button' value='Delete' onClick={this.rowDeleteClick} disabled />
+          </Fragment>
+        }
         </div>
       </Fragment>;
 

@@ -136,64 +136,69 @@ class ProdEditCard extends React.Component {
   render() {
 
     var resValid = this.validation(this.state.editRow);
+    var resFlgErr = false;
 
-      var arrRow = 
-        <Fragment>
-          <div className='ProdCardRow'>
-            <div className='ProdCardCell'>ID:</div>
-            <div className='ProdCardCell'>
-              {this.state.editRow.code}
-            </div>
+    for (let key in resValid) {
+      if (resValid[key].flg) resFlgErr=true;
+    }
+
+    var arrRow = 
+      <Fragment>
+        <div className='ProdCardRow'>
+          <div className='ProdCardCell'>ID:</div>
+          <div className='ProdCardCell'>
+            {this.state.editRow.code}
           </div>
-          <div className='ProdCardRow'>
-            <div className='ProdCardCell'>Name:</div>
-            <div className='ProdCardCell'>
-              <input type='text' name='TextInput' value={this.state.editRow.name} onChange={this.rowChangeName} />
-            </div>
-            {
-              (resValid.name.flg) &&
-              <div className='ProdCardCell'>
-                <span>{"\xa0"+resValid.name.errmsg}</span>
-              </div>
-            }
+        </div>
+        <div className='ProdCardRow'>
+          <div className='ProdCardCell'>Name:</div>
+          <div className='ProdCardCell'>
+            <input type='text' name='TextInput' value={this.state.editRow.name} onChange={this.rowChangeName} />
           </div>
-          <div className='ProdCardRow'>
-            <div className='ProdCardCell'>Price:</div>
+          {
+            (resValid.name.flg) &&
             <div className='ProdCardCell'>
-              <input type='text' name='TextInput' value={this.state.editRow.price} onChange={this.rowChangePrice} />
+              <span>{"\xa0"+resValid.name.errmsg}</span>
             </div>
-            {
-              (resValid.price.flg) &&
-              <div className='ProdCardCell'>
-                <span>{"\xa0"+resValid.price.errmsg}</span>
-              </div>
-            }
-            </div>
-          <div className='ProdCardRow'>
-            <div className='ProdCardCell'>Url:</div>
+          }
+        </div>
+        <div className='ProdCardRow'>
+          <div className='ProdCardCell'>Price:</div>
+          <div className='ProdCardCell'>
+            <input type='text' name='TextInput' value={this.state.editRow.price} onChange={this.rowChangePrice} />
+          </div>
+          {
+            (resValid.price.flg) &&
             <div className='ProdCardCell'>
-              <input type='text' name='TextInput' value={this.state.editRow.url} onChange={this.rowChangeUrl} />
+              <span>{"\xa0"+resValid.price.errmsg}</span>
             </div>
-            {
-              (resValid.url.flg) &&
-              <div className='ProdCardCell'>
-                <span>{"\xa0"+resValid.url.errmsg}</span>
-              </div>
-            }
-            </div>
-          <div className='ProdCardRow'>
-            <div className='ProdCardCell'>{"Quantity:\xa0"}</div>
+          }
+          </div>
+        <div className='ProdCardRow'>
+          <div className='ProdCardCell'>Url:</div>
+          <div className='ProdCardCell'>
+            <input type='text' name='TextInput' value={this.state.editRow.url} onChange={this.rowChangeUrl} />
+          </div>
+          {
+            (resValid.url.flg) &&
             <div className='ProdCardCell'>
-              <input type='text' name='TextInput' value={this.state.editRow.count} onChange={this.rowChangeCount} />
+              <span>{"\xa0"+resValid.url.errmsg}</span>
             </div>
-            {
-              (resValid.count.flg) &&
-              <div className='ProdCardCell'>
-                <span>{"\xa0"+resValid.count.errmsg}</span>
-              </div>
-            }
+          }
+          </div>
+        <div className='ProdCardRow'>
+          <div className='ProdCardCell'>{"Quantity:\xa0"}</div>
+          <div className='ProdCardCell'>
+            <input type='text' name='TextInput' value={this.state.editRow.count} onChange={this.rowChangeCount} />
+          </div>
+          {
+            (resValid.count.flg) &&
+            <div className='ProdCardCell'>
+              <span>{"\xa0"+resValid.count.errmsg}</span>
             </div>
-        </Fragment>;
+          }
+          </div>
+      </Fragment>;
     
     return (
         <div className={this.props.mode === 1?'ProdEditCard':'ProdNewCard'}>
@@ -202,12 +207,30 @@ class ProdEditCard extends React.Component {
             {arrRow}
           </div>
         {
-          (this.props.mode === 1) &&
-          <input type='button' value='Save' onClick={this.rowSaveClick}/>
+          (!resFlgErr) &&
+          <Fragment>
+          {
+            (this.props.mode === 1) &&
+            <input type='button' value='Save' onClick={this.rowSaveClick}/>
+          }
+          {
+            (this.props.mode === 2) &&
+            <input type='button' value='Add' onClick={this.rowSaveClick}/>
+          }
+          </Fragment>
         }
         {
-          (this.props.mode === 2) &&
-          <input type='button' value='Add' onClick={this.rowSaveClick}/>
+          (resFlgErr) &&
+          <Fragment>
+          {
+            (this.props.mode === 1) &&
+            <input type='button' value='Save' onClick={this.rowSaveClick} disabled />
+          }
+          {
+            (this.props.mode === 2) &&
+            <input type='button' value='Add' onClick={this.rowSaveClick} disabled />
+          }
+          </Fragment>
         }
           <input type='button' value='Cancel' onClick={this.rowCancelClick}/>
           <br/>

@@ -8,14 +8,14 @@ import './Goods.css';
 class Goods extends React.Component {
 
   static propTypes = {
+    code: PropTypes.number,
     name: PropTypes.string,
     price: PropTypes.number,
     url: PropTypes.string,
-    code: PropTypes.number,
     count: PropTypes.number,
-    cbSelected: PropTypes.func,
-    cbDeleted: PropTypes.func,
-    cbEdited: PropTypes.func,
+    cbSelected: PropTypes.func, //rowNumSelected()
+    cbDeleted: PropTypes.func, //deleteRow()
+    cbEdited: PropTypes.func, //editRow()
     isSelectRow: PropTypes.bool,
   }
 
@@ -34,7 +34,7 @@ class Goods extends React.Component {
   rowEditClick = (EO) => {
     EO.preventDefault();
     console.log( 'выбрана для редактирования строка # '+this.props.code );
-    this.props.cbEdited(this.props.code, 2);
+    this.props.cbEdited(this.props.code, 1); // 1 - режим редактирования
   }
   
   render() {

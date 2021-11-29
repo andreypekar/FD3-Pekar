@@ -17,10 +17,10 @@ class IShop extends React.Component {
     shopName: PropTypes.string.isRequired,
     listProducts: PropTypes.arrayOf(
       PropTypes.shape({
+        code: PropTypes.number,
         name: PropTypes.string,
         price: PropTypes.number,
         url: PropTypes.string,
-        code: PropTypes.number,
         count: PropTypes.number,
       })
     ),
@@ -37,7 +37,7 @@ class IShop extends React.Component {
     ],
     selectedRowCode: null,
     clickOnRow: false,
-    editMode: 0,
+    editMode: 0, //0 - просмотр, 1 редактирование, 2 - новый
   }
 
   rowNumSelected = (code) => {
@@ -66,16 +66,23 @@ class IShop extends React.Component {
 
   rowNewClick = (EO) => {
     EO.preventDefault();
-    console.log( 'создание нового продукта, режим 1' );
-    this.editRow(null, 1);
+    console.log( 'создание нового продукта, режим 2' );
+    this.editRow(null, 2);
   }
 
-  addRow = (code) => {
-    console.log( 'новая строка # '+ code );
+  addRow = (editRow) => {
+    console.log( 'новая строка # '+ editRow.code );
+    let tArr = this.state.arrGoods.slice();
+    tArr.push(editRow);
+    this.setState({editMode: 0, selectedRowCode: null, clickOnRow: false, arrGoods: tArr});
   }
 
-  saveRow = (code) => {
-    console.log( 'сохранена строка # '+ code );
+  saveRow = (editRow) => {
+    console.log( 'сохранена строка # '+ editRow.code );
+    let tArr = this.state.arrGoods.slice();
+    let indexElem = tArr.findIndex( item => ( item.code === editRow.code) );
+    tArr.splice(indexElem, 1, editRow);
+    this.setState({editMode: 0, selectedRowCode: null, clickOnRow: false, arrGoods: tArr});
   }
 
   cancelRow = () => {
@@ -87,10 +94,10 @@ class IShop extends React.Component {
 
     var rowsArr=this.state.arrGoods.map( item =>
       <Goods key={item.code}
+        code={item.code}
         name={item.name}
         price={item.price}
         url={item.url}
-        code={item.code}
         count={item.count}
         cbSelected={ this.rowNumSelected }
         cbDeleted={ this.deleteRow }
@@ -98,11 +105,15 @@ class IShop extends React.Component {
         isSelectRow={ (this.state.selectedRowCode==item.code && this.state.clickOnRow) }
       />
     );
-
-    if (this.state.editMode === 0)
-      var prodCard=this.state.arrGoods.find(item => ( this.state.selectedRowCode==item.code && this.state.clickOnRow ) );
-    else
-      var prodCard=this.state.arrGoods.find(item => ( this.state.selectedRowCode==item.code) );
+    let prodCard = {}; //строка продукта 
+    if (this.state.editMode === 0) // просмотр
+      prodCard=this.state.arrGoods.find(item => ( this.state.selectedRowCode==item.code && this.state.clickOnRow ) );
+    else if (this.state.editMode === 1) //редактирование
+      prodCard=this.state.arrGoods.find(item => ( this.state.selectedRowCode==item.code) );
+    else { // новый
+      let nextCode = this.state.arrGoods.reduce((prev, cur) => (prev.code > cur.code? prev: cur));
+      prodCard = {code: Number(nextCode.code+1), name: '', price: 0 , url:'', count: 0};
+    }
 
     return (
       <div className='IShop'>
@@ -122,12 +133,17 @@ class IShop extends React.Component {
           </div>
         }
         {
-          (this.state.editMode === 1 || this.state.editMode === 2) &&
+          (this.state.editMode === 1) &&
           <ProdEditCard prodCardRow={prodCard}
             mode={this.state.editMode}
-            colnames={this.state.colnames}
-            cbAdd={ this.addRow }
             cbSave={ this.saveRow }
+            cbCancel={ this.cancelRow } />
+        }
+        {
+          (this.state.editMode === 2) &&
+          <ProdEditCard prodCardRow={prodCard}
+            mode={this.state.editMode}
+            cbAdd={ this.addRow }
             cbCancel={ this.cancelRow } />
         }
       </div>

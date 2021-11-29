@@ -16,3 +16,7 @@
 .ProdCardCell input {
   width: 400px;
 }
+
+.ProdCardCell span {
+  color: red;
+}

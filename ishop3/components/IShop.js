@@ -79,9 +79,10 @@ class IShop extends React.Component {
 
   saveRow = (editRow) => {
     console.log( 'сохранена строка # '+ editRow.code );
-    let tArr = this.state.arrGoods.slice();
-    let indexElem = tArr.findIndex( item => ( item.code === editRow.code) );
-    tArr.splice(indexElem, 1, editRow);
+    let tArr = this.state.arrGoods.map((item) => (item.code === editRow.code?editRow:item));
+//    let tArr = this.state.arrGoods.slice();
+//    let indexElem = tArr.findIndex( item => ( item.code === editRow.code) );
+//    tArr.splice(indexElem, 1, editRow);
     this.setState({editMode: 0, selectedRowCode: null, clickOnRow: false, arrGoods: tArr});
   }
 

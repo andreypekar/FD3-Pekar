@@ -1,4 +1,8 @@
-﻿import React from 'react';
+﻿// можно использовать и его, так и сделал сначала, но потом переделал без использования
+// оставил как шаблон на будущее
+"use strict";
+
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const ColorFrame = props => (

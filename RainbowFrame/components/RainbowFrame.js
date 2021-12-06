@@ -2,19 +2,16 @@
 
 import React, { Children } from 'react';
 import './RainbowFrame.css';
-import ColorFrame from './ColorFrame';
 
 const RainbowFrame = props => {
 
-  let arrJSX=null;
+  let myJSX=props.children;
 
-  props.colors.forEach( elem => 
-    {
-      arrJSX = (arrJSX == null ? <ColorFrame color={elem}>{props.children}</ColorFrame> : <ColorFrame color={elem}>{arrJSX}</ColorFrame>);
-    }
-  );
+  props.colors.forEach( elem => {
+    myJSX = <div className='RainbowFrame' style={{border:"solid 5px "+elem, padding:"10px"}}>{myJSX}</div>;
+  });
 
-  return <div className='RainbowFrame'>{arrJSX}</div>;
+  return myJSX;
 };
 
 export default RainbowFrame;

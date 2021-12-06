@@ -29155,7 +29155,8 @@ __webpack_require__(18);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var BR2JSX = function BR2JSX(props) {
-  var re = /(<.*?>)/;
+  //  let re = /(<.*?>)/;
+  var re = /<br\s*\/?>/i;
   var br = _react2.default.createElement('br', null);
 
   return _react2.default.createElement(

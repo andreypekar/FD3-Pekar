@@ -21,11 +21,11 @@ function withRainbowFrame(colors) {
 
 // стрелочная функция
 let withRainbowFrame = colors => Component => props => {
-  let myJSX = null;
+  let myJSX = <Component {...props} />;
       
   colors.forEach( (elem, i) => {
     myJSX = <div key={i} style={{border:"solid 5px "+elem, padding:"5px"}}>
-              {myJSX==null?<Component {...props} />:myJSX}
+              {myJSX}
             </div>;
   });
 

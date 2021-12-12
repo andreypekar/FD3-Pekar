@@ -11,9 +11,9 @@ let FramedDoubleButton = withRainbowFrame(colors)(DoubleButton);
 
 ReactDOM.render(
   <div style={{width:"30%"}}>
-    <DoubleButton caption1="однажды" caption2="пору" cbPressed={ num => alert(num) } >в студёную зимнюю</DoubleButton>
+    <DoubleButton caption1='однажды' caption2='пору' cbPressed={ num => alert(num) } >в студёную зимнюю</DoubleButton>
     <br/>
-    <FramedDoubleButton caption1="я из лесу" caption2="мороз" cbPressed={ num => alert(num) } >вышел, был сильный</FramedDoubleButton>
+    <FramedDoubleButton caption1='я из лесу' caption2='мороз' cbPressed={ num => alert(num) } >вышел, был сильный</FramedDoubleButton>
   </div>
   ,document.getElementById('container')
 );

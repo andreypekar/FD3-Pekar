@@ -507,15 +507,32 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _withRainbowFrame = __webpack_require__(17);
 
+var _DoubleButton = __webpack_require__(18);
+
+var _DoubleButton2 = _interopRequireDefault(_DoubleButton);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var colors = ['red', 'orange', 'yellow', 'green', '#00BFFF', 'blue', 'purple'];
-var FramedFragment = (0, _withRainbowFrame.withRainbowFrame)(colors)(_react.Fragment);
+var FramedDoubleButton = (0, _withRainbowFrame.withRainbowFrame)(colors)(_DoubleButton2.default);
 
 _reactDom2.default.render(_react2.default.createElement(
-  FramedFragment,
+  _react.Fragment,
   null,
-  'Hello!'
+  _react2.default.createElement(
+    _DoubleButton2.default,
+    { caption1: '\u043E\u0434\u043D\u0430\u0436\u0434\u044B', caption2: '\u043F\u043E\u0440\u0443', cbPressed: function cbPressed(num) {
+        return alert(num);
+      } },
+    '\u0432 \u0441\u0442\u0443\u0434\u0451\u043D\u0443\u044E \u0437\u0438\u043C\u043D\u044E\u044E'
+  ),
+  _react2.default.createElement(
+    FramedDoubleButton,
+    { caption1: '\u044F \u0438\u0437 \u043B\u0435\u0441\u0443', caption2: '\u043C\u043E\u0440\u043E\u0437', cbPressed: function cbPressed(num) {
+        return alert(num);
+      } },
+    '\u0432\u044B\u0448\u0435\u043B, \u0431\u044B\u043B \u0441\u0438\u043B\u044C\u043D\u044B\u0439'
+  )
 ), document.getElementById('container'));
 
 /***/ }),
@@ -29153,8 +29170,6 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(18);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* // функциональный стиль
@@ -29183,14 +29198,10 @@ var withRainbowFrame = function withRainbowFrame(colors) {
       var myJSX = null;
 
       colors.forEach(function (elem, i) {
-        if (myJSX == null) myJSX = _react2.default.createElement(
-          'div',
+        myJSX = _react2.default.createElement(
+          "div",
           { key: i, style: { border: "solid 5px " + elem, padding: "10px" } },
-          _react2.default.createElement(Component, props)
-        );else myJSX = _react2.default.createElement(
-          'div',
-          { key: i, style: { border: "solid 5px " + elem, padding: "10px" } },
-          myJSX
+          myJSX == null ? _react2.default.createElement(Component, props) : myJSX
         );
       });
 
@@ -29203,6 +29214,41 @@ exports.withRainbowFrame = withRainbowFrame;
 
 /***/ }),
 /* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(19);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DoubleButton = function DoubleButton(props) {
+  return _react2.default.createElement(
+    'div',
+    { className: 'DoubleButton' },
+    _react2.default.createElement('input', { type: 'button', value: props.caption1, onClick: function onClick(EO) {
+        return props.cbPressed("1");
+      } }),
+    props.children,
+    _react2.default.createElement('input', { type: 'button', value: props.caption2, onClick: function onClick(EO) {
+        return props.cbPressed("2");
+      } })
+  );
+};
+
+exports.default = DoubleButton;
+
+/***/ }),
+/* 19 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

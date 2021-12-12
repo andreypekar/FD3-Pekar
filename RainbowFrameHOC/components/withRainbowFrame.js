@@ -1,7 +1,5 @@
 ﻿import React from 'react';
 
-import './withRainbowFrame.css';
-
 /* // функциональный стиль
 function withRainbowFrame(colors) {
   return function(Component) {
@@ -26,10 +24,9 @@ let withRainbowFrame = colors => Component => props => {
   let myJSX = null;
       
   colors.forEach( (elem, i) => {
-    if (myJSX == null) myJSX = <div key={i} style={{border:"solid 5px "+elem, padding:"10px"}}>
-                                <Component {...props} />
-                              </div>;
-    else myJSX = <div key={i} style={{border:"solid 5px "+elem, padding:"10px"}}>{myJSX}</div>;
+    myJSX = <div key={i} style={{border:"solid 5px "+elem, padding:"5px"}}>
+              {myJSX==null?<Component {...props} />:myJSX}
+            </div>;
   });
 
   return myJSX;

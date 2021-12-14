@@ -1,0 +1,16 @@
+﻿.TableHeader {
+  display: table-row;
+  font-weight: bold;
+}
+
+.HeaderCell {
+  display: table-cell;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  vertical-align: top;
+  text-align: left;
+  word-wrap: break-word;
+  margin: 0px;
+  padding: 3px 5px 3px 5px;
+}
+  

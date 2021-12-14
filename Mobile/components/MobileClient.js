@@ -6,10 +6,15 @@ import './MobileClient.css';
 class MobileClient extends React.PureComponent {
 
   static propTypes = {
-    info:PropTypes.shape({
+    info: PropTypes.shape({
       id: PropTypes.number.isRequired,
-      fio: PropTypes.string.isRequired,
+      fio: PropTypes.shape({
+        lst: PropTypes.string.isRequired,
+        fst: PropTypes.string.isRequired,
+        mid: PropTypes.string,
+      }),
       balance: PropTypes.number.isRequired,
+      status: PropTypes.bool.isRequired,
     }),
   };
 
@@ -28,13 +33,28 @@ class MobileClient extends React.PureComponent {
     
     return (
       <div className='MobileClient'>
-        <span className='MobileClientBalance'>{this.state.info.balance}</span>
-        <span className='MobileClientFIO'>{this.state.info.fio}</span>
+        <div className='LastNameCell'>{this.state.info.fio.lst}</div>
+        <div className='FirstNameCell'>{this.state.info.fio.fst}</div>
+        <div className='MiddleNameCell'>{this.state.info.fio.mid}</div>
+        <div className='BalanceCell'>{this.state.info.balance}</div>
+        { (this.state.info.status) &&
+          <div className='StatusOkCell'>active</div>
+        }
+        { (this.state.info.status == false) &&
+          <div className='StatusBlockCell'>blocked</div>
+        }
+        { (!('status' in this.state.info) || this.state.info.status==null || this.state.info.status==undefined) &&
+          <div className='StatusUnknownCell'>unknown</div>
+        }
+        <div className='EditCell'>
+          <input type="button" value="Редактировать" onClick={()=>alert('Редактировать')} />
+        </div>
+        <div className='DeleteCell'>
+          <input type="button" value="Удалить" onClick={()=>alert('Удалить')} />
+        </div>
       </div>
     );
-
   }
-
 }
 
 export default MobileClient;

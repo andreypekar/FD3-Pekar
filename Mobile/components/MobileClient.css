@@ -1,17 +1,30 @@
-﻿div.MobileClient
-{
-  padding: 2px 0;
+﻿.MobileClient {
+  display: table-row;
 }
 
-span.MobileClientBalance
-{
-  float: right;
-  width: 30px;
-  font-weight: bold;
-  text-align: right;
+.LastNameCell, .FirstNameCell, .MiddleNameCell, .BalanceCell, .EditCell, .DeleteCell, .StatusOkCell, .StatusBlockCell, .StatusUnknownCell {
+  display: table-cell;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  text-align: left;
+  word-wrap: break-word;
+  margin: 0px;
+  padding: 3px 5px 3px 5px;
 }
 
-span.MobileClientFIO
-{
-  margin-right: 30px;
+.StatusOkCell, .StatusBlockCell, .StatusUnknownCell {
+  margin: 0px;
+  padding-left: 5px;
+}
+
+.StatusOkCell {
+  background-color: lightgreen;
+}
+
+.StatusBlockCell {
+  background-color: red;
+}
+
+.StatusUnknownCell {
+  background-color: grey;
 }

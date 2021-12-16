@@ -27,10 +27,10 @@ class MobileClientEdit extends React.PureComponent {
   };
   
   NewFormRef = null;
-  
+
   setNewFormRef = (ref) => {
     this.NewFormRef = ref;
-  }
+  };
 
   setSave = (EO) => {
     if ( this.NewFormRef ) {
@@ -69,11 +69,11 @@ class MobileClientEdit extends React.PureComponent {
       else
         alert("Не внесено никаких изменений, выход через кнопку 'Отмена'");
     }
-  }
+  };
 
   setCancel = (EO) => {
     voteEvents.emit('ECancelClicked');
-  }
+  };
 
   render() {
 

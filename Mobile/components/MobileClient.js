@@ -31,11 +31,11 @@ class MobileClient extends React.PureComponent {
 
   setEdit = (EO) => {
     voteEvents.emit('EEditClicked',this.state.info.id);
-  }
+  };
 
   setDelete = (EO) => {
     voteEvents.emit('EDeleteClicked',this.state.info.id);
-  }
+  };
 
   render() {
 

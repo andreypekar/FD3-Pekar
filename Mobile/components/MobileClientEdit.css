@@ -1,0 +1,22 @@
+﻿.EditTable {
+  display: table; 
+  border-collapse: collapse;
+  margin: 5px 0px 5px 0px;
+  padding: 0px;
+}
+
+ .EditRow {
+  display: table-row;
+}
+
+.EditCell {
+  display: table-cell;
+  text-align: left;
+  word-wrap: break-word;
+  margin: 0px;
+  padding: 3px 5px 3px 5px;
+}
+
+.EditCell input {
+  width: 400px;
+}

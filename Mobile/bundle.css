@@ -1,0 +1,89 @@
+.MobileClient {
+  display: table-row;
+}
+
+.LastNameCell, .FirstNameCell, .MiddleNameCell, .BalanceCell, .EditButtonCell, .DeletButtonCell, .StatusCell {
+  display: table-cell;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  text-align: left;
+  word-wrap: break-word;
+  margin: 0px;
+  padding: 3px 5px 3px 5px;
+}
+
+.ActiveClient, .BlockClient, .UnknownClient {
+  margin: 0px;
+  padding-left: 5px;
+}
+
+.ActiveClient {
+  background-color: lightgreen;
+}
+
+.BlockClient {
+  background-color: red;
+}
+
+.UnknownClient {
+  background-color: grey;
+}
+.EditTable {
+  display: table; 
+  border-collapse: collapse;
+  margin: 5px 0px 5px 0px;
+  padding: 0px;
+}
+
+ .EditRow {
+  display: table-row;
+}
+
+.EditCell {
+  display: table-cell;
+  text-align: left;
+  word-wrap: break-word;
+  margin: 0px;
+  padding: 3px 5px 3px 5px;
+}
+
+.EditCell input {
+  width: 400px;
+}.TableHeader {
+  display: table-row;
+  font-weight: bold;
+}
+
+.HeaderCell {
+  display: table-cell;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  vertical-align: top;
+  text-align: left;
+  word-wrap: break-word;
+  margin: 0px;
+  padding: 3px 5px 3px 5px;
+}
+  .MobileCompanyName {
+  display: block;
+  margin: 5px 0px 5px 0px;
+}
+
+.MobileCompanyClients {
+  display: table; 
+  border-collapse: collapse;
+  margin: 5px 0px 5px 0px;
+  padding: 0px;
+}
+
+.ToolBar {
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  padding: 5px 0px 5px 0px;
+  margin: 5px 0px 5px 0px;
+}
+
+.Footer {
+  margin-top: 5px;
+}
+/*# sourceMappingURL=bundle.css.map*/

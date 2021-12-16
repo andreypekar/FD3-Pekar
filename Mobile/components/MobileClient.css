@@ -2,7 +2,7 @@
   display: table-row;
 }
 
-.LastNameCell, .FirstNameCell, .MiddleNameCell, .BalanceCell, .EditCell, .DeleteCell, .StatusOkCell, .StatusBlockCell, .StatusUnknownCell {
+.LastNameCell, .FirstNameCell, .MiddleNameCell, .BalanceCell, .EditButtonCell, .DeletButtonCell, .StatusCell {
   display: table-cell;
   border-top: 1px solid lightgrey;
   border-bottom: 1px solid lightgrey;
@@ -12,19 +12,19 @@
   padding: 3px 5px 3px 5px;
 }
 
-.StatusOkCell, .StatusBlockCell, .StatusUnknownCell {
+.ActiveClient, .BlockClient, .UnknownClient {
   margin: 0px;
   padding-left: 5px;
 }
 
-.StatusOkCell {
+.ActiveClient {
   background-color: lightgreen;
 }
 
-.StatusBlockCell {
+.BlockClient {
   background-color: red;
 }
 
-.StatusUnknownCell {
+.UnknownClient {
   background-color: grey;
 }

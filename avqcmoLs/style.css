@@ -1,0 +1,86 @@
+﻿ul {
+  list-style: none;
+  padding: 0;
+  margin-left: 10px;
+}
+
+ul li {
+  margin-left: 20px;
+}
+
+.regions {
+  max-height: 300px;
+  overflow-y: auto;
+  display: inline-block;
+}
+
+ul li p.region-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+          align-items: center;
+          justify-content: flex-start;
+  margin: 5px 0;
+}
+
+ul li p.region-name span {
+  cursor: pointer;
+}
+
+ul li p.region-name + ul {
+  display: none;
+}
+
+ul li p.region-name.open + ul {
+  display: block;
+}
+
+.regions-plus {
+  cursor: pointer;
+  color: #4cbf73;
+}
+
+label .region-span-input {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 5px;
+  border: 1px solid #777;
+  margin-right: 3px;
+  cursor: pointer;
+}
+
+a {
+  margin-right: 5px;
+}
+
+label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+          align-items: center;
+}
+
+input {
+  display: none;
+}
+
+input:checked + label .region-span-input {
+  background: green;
+  background: url(http://webart9f.beget.tech/img/check.png) no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: 0.2s ease all;
+}
+
+li.only-one-elem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+          align-items: center;
+          justify-content: flex-start;
+}
+
+li.only-one-elem::before {
+  display: none;
+}
